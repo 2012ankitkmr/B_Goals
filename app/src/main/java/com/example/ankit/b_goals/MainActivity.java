@@ -40,13 +40,38 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,GoogleMap.OnMyLocationButtonClickListener,OnMapReadyCallback {
 SupportMapFragment sMapFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sMapFragment = SupportMapFragment.newInstance();
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+// --------------------------------------------SIGN IN OUT TOGGLE ------------------------------------------------------------
+        //   int checkval = 0;
+        // int checkval = getIntent().getIntExtra("check",signed);
+
+        // MenuItem SignInButton = (MenuItem) findViewById(R.id.nav_signin);
+        // MenuItem SignOutButton = (MenuItem) findViewById(R.id.nav_signout);
+        // if(checkval == 1) {
+        //   SignInButton.setVisible(false);
+        //   SignOutButton.setVisible(true);
+        // }
+        // else
+        // {
+        //    SignInButton.setVisible(true);
+        // SignOutButton.setVisible(false);
+        // }
+
+
+//---------------------------------------------------------------------------------------------------------------------------
+
+
+
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -85,6 +110,10 @@ SupportMapFragment sMapFragment;
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
+
+
+
+
 /*
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.dashboard, menu);
@@ -113,6 +142,11 @@ SupportMapFragment sMapFragment;
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            return true;
+        }
+        if(id == R.id.search_bar) {
+            Toast temp = Toast.makeText(MainActivity.this, "Search Bar is clicked", Toast.LENGTH_SHORT);
+            temp.show();
             return true;
         }
 
