@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.FragmentManager;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -33,6 +34,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import android.support.design.widget.Snackbar;
 
 import java.io.IOException;
 import java.util.List;
@@ -40,6 +42,9 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,GoogleMap.OnMyLocationButtonClickListener,OnMapReadyCallback {
 SupportMapFragment sMapFragment;
+
+
+    public int Signed ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,26 +54,8 @@ SupportMapFragment sMapFragment;
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Signed = 0;
 
-
-// --------------------------------------------SIGN IN OUT TOGGLE ------------------------------------------------------------
-        //   int checkval = 0;
-        // int checkval = getIntent().getIntExtra("check",signed);
-
-        // MenuItem SignInButton = (MenuItem) findViewById(R.id.nav_signin);
-        // MenuItem SignOutButton = (MenuItem) findViewById(R.id.nav_signout);
-        // if(checkval == 1) {
-        //   SignInButton.setVisible(false);
-        //   SignOutButton.setVisible(true);
-        // }
-        // else
-        // {
-        //    SignInButton.setVisible(true);
-        // SignOutButton.setVisible(false);
-        // }
-
-
-//---------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -82,6 +69,30 @@ SupportMapFragment sMapFragment;
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+
+// --------------------------------------------SIGN IN OUT TOGGLE ------------------------------------------------------------
+        //   int checkval = 0;
+        // int checkval = getIntent().getIntExtra("check",signed);
+
+        // MenuItem SignInButton = (MenuItem) findViewById(R.id.nav_signin);
+       // MenuItem SignOutButton = (MenuItem)findViewById(R.id.nav_signout);
+        // if(checkval == 1) {
+        //   SignInButton.setVisible(false);
+        //   SignOutButton.setVisible(true);
+        // }
+        // else
+        // {
+        //    SignInButton.setVisible(true);
+      //  SignOutButton.setTitle("Signing in");
+        // }
+
+
+//---------------------------------------------------------------------------------------------------------------------------
+
+
+
 
 
         sMapFragment.getMapAsync(this);
@@ -111,26 +122,6 @@ SupportMapFragment sMapFragment;
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
 
-
-
-
-/*
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.dashboard, menu);
-
-        MenuItem searchItem = menu.findItem(R.id.action_search);
-
-        SearchManager searchManager = (SearchManager) MainActivity.this.getSystemService(Context.SEARCH_SERVICE);
-
-        SearchView searchView = null;
-        if (searchItem != null) {
-            searchView = (SearchView) searchItem.getActionView();
-        }
-        if (searchView != null) {
-            searchView.setSearchableInfo(searchManager.getSearchableInfo(MainActivity.this.getComponentName()));
-        }
-        return super.onCreateOptionsMenu(menu);
-*/
     }
 
     @Override
@@ -160,6 +151,9 @@ SupportMapFragment sMapFragment;
         int id = item.getItemId();
 
         if (id == R.id.nav_profile) {
+
+            Intent i = new Intent(MainActivity.this,ProfileActivity.class);
+            startActivity(i);
             // Handle the camera action
         } else if (id == R.id.nav_goals) {
 
@@ -168,11 +162,41 @@ SupportMapFragment sMapFragment;
         } else if (id == R.id.nav_checkinout) {
 
         } else if (id == R.id.nav_maptype) {
+            if(mMap.getMapType() == GoogleMap.MAP_TYPE_NORMAL)
+            {
+                mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+            }
+            else
+                mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+
 
         } else if (id == R.id.nav_signin) {
 
+            if( Signed == 0 )
+            {
+                Signed = 1;
+                Intent i = new Intent(MainActivity.this,MainLoginActivity.class);
+                startActivity(i);
+
+            }
+            else
+            {
+                Toast temp = Toast.makeText(MainActivity.this, "Already Signed In!", Toast.LENGTH_SHORT);
+                temp.show();
+            }
+
         } else if(id == R.id.nav_signout)
         {
+            if(Signed == 1) {
+                Toast temp = Toast.makeText(MainActivity.this, "Signed Out Successfully!", Toast.LENGTH_SHORT);
+                temp.show();
+                Signed = 0;
+            }
+            else
+            {
+                Toast temp = Toast.makeText(MainActivity.this, "Sign In First!", Toast.LENGTH_SHORT);
+                temp.show();
+            }
 
         }
 
@@ -180,6 +204,7 @@ SupportMapFragment sMapFragment;
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
 
     /**
@@ -206,7 +231,7 @@ SupportMapFragment sMapFragment;
 
 /*    public void changeType(View v)
     {
-        if(mMap.getMapType()==GoogleMap.MAP_TYPE_NORMAL)
+        if(mMap.getMapType() == GoogleMap.MAP_TYPE_NORMAL)
         {
             mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
         }

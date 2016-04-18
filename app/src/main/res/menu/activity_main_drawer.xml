@@ -31,17 +31,20 @@
                 android:title="Map Type" />
         </menu>
     </item>
+
     <item android:title="User Accounts">
-<menu>
+<menu >
         <item
             android:id="@+id/nav_signin"
             android:icon="@drawable/ic_action_user"
-            android:title="Sign In" />
-        <item
+            android:title="Sign In"
+            android:visible="true"  />
+
+    <item
             android:id="@+id/nav_signout"
             android:icon="@drawable/ic_action_user"
-            android:title="Sign Out" />
-        </menu>
+            android:title="Sign Out"
+            android:visible="true"/>
+</menu>
     </item>
-
 </menu>
