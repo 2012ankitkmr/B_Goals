@@ -52,13 +52,10 @@ SupportMapFragment sMapFragment;
         sMapFragment = SupportMapFragment.newInstance();
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         Signed = 0;
 
-
-
-
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -152,8 +149,10 @@ SupportMapFragment sMapFragment;
 
         if (id == R.id.nav_profile) {
 
-            Intent i = new Intent(MainActivity.this,ProfileActivity.class);
-            startActivity(i);
+            if(Signed == 1) {
+                Intent i = new Intent(MainActivity.this, ProfileActivity.class);
+                startActivity(i);
+            }
             // Handle the camera action
         } else if (id == R.id.nav_goals) {
 
