@@ -34,11 +34,12 @@ public class MainLoginActivity extends Activity {
             if(pass.equals(password)&&( password != null||password != ""))
             {
                 int val = 1;
-                Intent i=new Intent(MainLoginActivity.this,MainActivity.class);
-                i.putExtra("check",val);
+               // Intent i = new Intent(MainLoginActivity.this,MainActivity.class);
+                //i.putExtra("check",val);
                 Toast temp = Toast.makeText(MainLoginActivity.this,"You are now Signed In!",Toast.LENGTH_SHORT);
                 temp.show();
-                startActivity(i);
+                finish();
+            //    startActivity(i);
             }
             else{
                 Toast temp = Toast.makeText(MainLoginActivity.this,"Username and Password don't match!",Toast.LENGTH_SHORT);
@@ -50,6 +51,7 @@ public class MainLoginActivity extends Activity {
         {
             Intent i=new Intent(MainLoginActivity.this,Signup.class);
             startActivity(i);
+            finish();
         }
 
     }

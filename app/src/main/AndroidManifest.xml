@@ -31,6 +31,14 @@
         <activity android:name=".MainLoginActivity"></activity>
         <activity android:name=".Signup"></activity>
         <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".BusinessAdd_show"></activity>
+        <activity android:name=".BusinessRead"></activity>
+        <activity android:name=".GoalsEdit"></activity>
+        <activity android:name=".AddressEdit"></activity>
+        <activity android:name=".GoalSwipeView"></activity>
+
+
+
 
         <meta-data
             android:name="com.google.android.gms.version"

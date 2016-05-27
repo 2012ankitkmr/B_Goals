@@ -82,6 +82,7 @@
         android:text="Sign up"
         android:id="@+id/Bsignupbutton"
         android:onClick="onSignUpClick"
-        android:nestedScrollingEnabled="false" />
+        android:nestedScrollingEnabled="false"
+        android:layout_gravity="center_horizontal" />
 
 </LinearLayout>

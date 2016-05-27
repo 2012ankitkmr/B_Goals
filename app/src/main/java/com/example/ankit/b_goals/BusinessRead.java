@@ -4,30 +4,30 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 /**
  * Created by Ankit on 17-04-2016.
  */
 
-public class AddressEdit extends Activity {
+public class BusinessRead extends Activity {
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.address_edit);
+        setContentView(R.layout.bussinessread);
     }
-
-    public void onSclick(View v)
+    public void onBclick(View v)
     {
-        if(v.getId()==R.id.Addressbutton)
+        if(v.getId()==R.id.Bedit)
         {
-            Toast temp = Toast.makeText(AddressEdit.this, "Can be configured Later!", Toast.LENGTH_SHORT);
-            temp.show();
-
+            Intent i  = new Intent(BusinessRead.this,BusinessAdd_show.class);
+            startActivity(i);
         }
 
     }
+
+
+
 
 }

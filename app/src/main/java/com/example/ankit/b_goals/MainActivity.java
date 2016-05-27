@@ -49,10 +49,14 @@ SupportMapFragment sMapFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(savedInstanceState == null) {
+            Signed = 0;
+        }
+
+
         sMapFragment = SupportMapFragment.newInstance();
         setContentView(R.layout.activity_main);
 
-        Signed = 0;
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -75,21 +79,16 @@ SupportMapFragment sMapFragment;
 
         // MenuItem SignInButton = (MenuItem) findViewById(R.id.nav_signin);
        // MenuItem SignOutButton = (MenuItem)findViewById(R.id.nav_signout);
-        // if(checkval == 1) {
-        //   SignInButton.setVisible(false);
-        //   SignOutButton.setVisible(true);
+       //  if(Signed == 1) {
+         //  SignInButton.setVisible(false);
+          // SignOutButton.setVisible(true);
         // }
-        // else
-        // {
-        //    SignInButton.setVisible(true);
-      //  SignOutButton.setTitle("Signing in");
+        // else {
+          //  SignInButton.setVisible(true);
+           // SignOutButton.setVisible(false);
         // }
-
 
 //---------------------------------------------------------------------------------------------------------------------------
-
-
-
 
 
         sMapFragment.getMapAsync(this);
@@ -153,10 +152,35 @@ SupportMapFragment sMapFragment;
                 Intent i = new Intent(MainActivity.this, ProfileActivity.class);
                 startActivity(i);
             }
-            // Handle the camera action
+            else
+            {
+                Toast temp = Toast.makeText(MainActivity.this, "Sign In First!", Toast.LENGTH_SHORT);
+                temp.show();
+            }
+            // Handle the profile action
         } else if (id == R.id.nav_goals) {
+            if(Signed == 1) {
+                Intent i = new Intent(MainActivity.this, GoalSwipeView.class);
+                startActivity(i);
+            }
+            else
+            {
+                Toast temp = Toast.makeText(MainActivity.this, "Sign In First!", Toast.LENGTH_SHORT);
+                temp.show();
+            }
+
 
         } else if (id == R.id.nav_bussiness) {
+
+            if(Signed == 1) {
+                Intent i = new Intent(MainActivity.this, BusinessRead.class);
+                startActivity(i);
+            }
+            else
+            {
+                Toast temp = Toast.makeText(MainActivity.this, "Sign In First!", Toast.LENGTH_SHORT);
+                temp.show();
+            }
 
         } else if (id == R.id.nav_checkinout) {
 
@@ -228,17 +252,7 @@ SupportMapFragment sMapFragment;
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
-/*    public void changeType(View v)
-    {
-        if(mMap.getMapType() == GoogleMap.MAP_TYPE_NORMAL)
-        {
-            mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-        }
-        else
-            mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-
-    }
-
+/*
 
     public void onSearch(View view) {
 

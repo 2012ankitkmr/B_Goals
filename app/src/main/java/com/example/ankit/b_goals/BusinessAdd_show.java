@@ -10,23 +10,23 @@ import android.widget.Toast;
  * Created by Ankit on 17-04-2016.
  */
 
-public class AddressEdit extends Activity {
+public class BusinessAdd_show extends Activity {
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.address_edit);
+        setContentView(R.layout.bussiness_show);
     }
 
     public void onSclick(View v)
     {
-        if(v.getId()==R.id.Addressbutton)
-        {
-            Toast temp = Toast.makeText(AddressEdit.this, "Can be configured Later!", Toast.LENGTH_SHORT);
-            temp.show();
+       if(v.getId()==R.id.Bussinessbutton)
+       {
+           Toast temp = Toast.makeText(BusinessAdd_show.this, "Can be configured Later!", Toast.LENGTH_SHORT);
+           temp.show();
 
-        }
+       }
 
     }
 

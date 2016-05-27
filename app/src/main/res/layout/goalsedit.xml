@@ -1,6 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Goal No. 5"
+        android:textSize="16pt"
+        android:id="@+id/goalsnotextView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Bussiness ID"
+        android:id="@+id/bidtextView"
+        android:layout_below="@+id/goalsnotextView"
+        android:paddingTop="25dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Bussinessidspinner"
+        android:paddingTop="25dp"
+        android:layout_toRightOf="@+id/bidtextView"
+        android:layout_toEndOf="@+id/bidtextView"
+        android:layout_alignTop="@+id/bidtextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Address ID"
+        android:id="@+id/AidtextView"
+        android:layout_below="@+id/bidtextView"
+        android:layout_marginTop="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Addressidspinner"
+        android:layout_below="@+id/Bussinessidspinner"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/AidtextView"
+        android:layout_toEndOf="@+id/AidtextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Check In  "
+        android:id="@+id/checkintextView"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Check out"
+        android:id="@+id/checkouttextView"
+        android:layout_below="@+id/checkintextView"
+        android:paddingTop="20dp"
+         />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:id="@+id/Goalsbutton"
+        android:layout_below="@+id/checkouttextView"
+        android:layout_alignLeft="@+id/Bussinessidspinner"
+        android:layout_alignStart="@+id/Bussinessidspinner"
+        android:layout_marginTop="51dp"
+        android:onClick="onGSclick" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pick date"
+        android:id="@+id/datebutton"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/checkintextView"
+        android:layout_marginLeft="20dp"
+
+        />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pick time"
+        android:id="@+id/timebutton"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/datebutton"
+        android:layout_marginLeft="20dp"
+
+        />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pick date"
+        android:id="@+id/datebutton2"
+        android:layout_below="@+id/datebutton"
+        android:layout_alignLeft="@+id/datebutton"
+        android:layout_alignStart="@+id/datebutton" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pick  time"
+        android:id="@+id/timebutton2"
+        android:layout_alignTop="@+id/datebutton2"
+        android:layout_alignLeft="@+id/timebutton"
+        android:layout_alignStart="@+id/timebutton" />
+
+</RelativeLayout>

@@ -7,27 +7,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Address Id"
-        android:id="@+id/ATextField"
-        android:layout_alignBottom="@+id/Aspinner"
+        android:text="Bussiness Id"
+        android:id="@+id/BTextField"
+        android:layout_alignBottom="@+id/Bspinner"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/Aspinner"
+        android:id="@+id/Bspinner"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/ATextField"
-        android:layout_toEndOf="@+id/ATextField" />
+        android:layout_toRightOf="@+id/BTextField"
+        android:layout_toEndOf="@+id/BTextField" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Address Description"
-        android:id="@+id/ADtextView"
-        android:layout_below="@+id/ATextField"
+        android:text="Business Description"
+        android:id="@+id/BDtextView"
+        android:layout_below="@+id/BTextField"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="41dp" />
@@ -35,20 +35,39 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/ADeditText"
+        android:id="@+id/BDeditText"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:text="Enter Description"
-        android:layout_below="@+id/ADtextView"
+        android:layout_below="@+id/BDtextView"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Address Id"
+        android:id="@+id/AtextView"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner2"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/AtextView"
+        android:layout_toEndOf="@+id/BTextField" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save"
-        android:id="@+id/Addressbutton"
-        android:layout_below="@+id/ADeditText"
+        android:id="@+id/Bussinessbutton"
+        android:layout_below="@+id/spinner2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="77dp"
         android:onClick="onSclick" />

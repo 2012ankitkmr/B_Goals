@@ -27,7 +27,7 @@
             android:padding="20dp"
             android:scaleType="centerCrop"
             android:src="@drawable/my_pic"
-            />
+            android:clickable="false" />
 
 
         <RelativeLayout
@@ -39,6 +39,30 @@
             android:elevation="4dp"
             android:paddingBottom="24dp">
 
+            <TextView
+                android:id="@+id/cnt_goals"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="64"
+                android:textColor="@color/bright_foreground_inverse_material_dark"
+                android:textSize="45sp"
+                android:layout_marginLeft="13dp"
+                android:focusableInTouchMode="false"
+                android:layout_alignTop="@+id/fab"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+            <TextView
+
+                android:id="@+id/goals_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Goals"
+                android:textColor="@color/bright_foreground_inverse_material_dark"
+                android:textSize="10sp"
+                android:focusableInTouchMode="false"
+                android:layout_below="@+id/cnt_goals"
+                android:layout_alignLeft="@+id/cnt_goals"
+                android:layout_alignStart="@+id/cnt_goals" />
 
             <TextView
                 android:id="@+id/user_profile_name"
@@ -83,6 +107,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/phone_number"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -90,51 +115,19 @@
                 android:clickable="true"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:text="Android Profile UI Design" />
-
+                android:text="Phone No.999999999" />
             <TextView
+                android:id="@+id/profile_address"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:layout_marginBottom="3dp"
-                android:layout_marginTop="3dp"
                 android:background="#fff"
                 android:clickable="true"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:text="Android Profile XMl UI Design" />
+                android:text="Address:" />
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:background="#fff"
-                android:clickable="true"
-                android:elevation="4dp"
-                android:padding="20dp"
-                android:text="Android Profile UI Design" />
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_marginBottom="3dp"
-                android:layout_marginTop="3dp"
-                android:background="#fff"
-                android:clickable="true"
-                android:elevation="4dp"
-                android:padding="20dp"
-                android:text="Android Profile XMl UI Design" />
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:background="#fff"
-                android:clickable="true"
-                android:elevation="4dp"
-                android:padding="20dp"
-                android:text="Android Profile UI Design" />
         </LinearLayout>
     </RelativeLayout>
 </ScrollView>
