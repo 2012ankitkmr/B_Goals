@@ -5,6 +5,7 @@ import android.app.FragmentManager;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -43,19 +44,23 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,GoogleMap.OnMyLocationButtonClickListener,OnMapReadyCallback {
 SupportMapFragment sMapFragment;
 
+    public static final String MyPREFERENCES = "MyPrefs" ;
+    public static final String Name = "nameKey";
+    public static final String logging = "loginKey";
+    SharedPreferences sharedpreferences;
 
-    public int Signed ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(savedInstanceState == null) {
-            Signed = 0;
-        }
 
+        sharedpreferences = getSharedPreferences(MyPREFERENCES,Context.MODE_PRIVATE);
 
         sMapFragment = SupportMapFragment.newInstance();
         setContentView(R.layout.activity_main);
+
+
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -74,15 +79,14 @@ SupportMapFragment sMapFragment;
 
 
 // --------------------------------------------SIGN IN OUT TOGGLE ------------------------------------------------------------
-        //   int checkval = 0;
-        // int checkval = getIntent().getIntExtra("check",signed);
 
-        // MenuItem SignInButton = (MenuItem) findViewById(R.id.nav_signin);
-       // MenuItem SignOutButton = (MenuItem)findViewById(R.id.nav_signout);
-       //  if(Signed == 1) {
-         //  SignInButton.setVisible(false);
-          // SignOutButton.setVisible(true);
-        // }
+
+//        int Signed = sharedpreferences.getInt(logging,0);
+
+  //       if(Signed == 1) {
+
+//
+  //       }
         // else {
           //  SignInButton.setVisible(true);
            // SignOutButton.setVisible(false);
@@ -98,8 +102,10 @@ SupportMapFragment sMapFragment;
         sfm.beginTransaction().add(R.id.map_frame,sMapFragment).commit();
         else
             sfm.beginTransaction().show(sMapFragment).commit();
-
-
+        if(isNetworkAvailable()== false)
+        {
+           Toast.makeText(this,"No Internet Connection! ",Toast.LENGTH_LONG ).show();
+        }
     }
 
     @Override
@@ -148,6 +154,7 @@ SupportMapFragment sMapFragment;
 
         if (id == R.id.nav_profile) {
 
+            int Signed = sharedpreferences.getInt(logging,0);
             if(Signed == 1) {
                 Intent i = new Intent(MainActivity.this, ProfileActivity.class);
                 startActivity(i);
@@ -159,6 +166,7 @@ SupportMapFragment sMapFragment;
             }
             // Handle the profile action
         } else if (id == R.id.nav_goals) {
+            int Signed = sharedpreferences.getInt(logging,0);
             if(Signed == 1) {
                 Intent i = new Intent(MainActivity.this, GoalSwipeView.class);
                 startActivity(i);
@@ -171,6 +179,8 @@ SupportMapFragment sMapFragment;
 
 
         } else if (id == R.id.nav_bussiness) {
+
+            int Signed = sharedpreferences.getInt(logging,0);
 
             if(Signed == 1) {
                 Intent i = new Intent(MainActivity.this, BusinessRead.class);
@@ -195,6 +205,7 @@ SupportMapFragment sMapFragment;
 
         } else if (id == R.id.nav_signin) {
 
+            int Signed = sharedpreferences.getInt(logging,0);
             if( Signed == 0 )
             {
                 Signed = 1;
@@ -209,8 +220,11 @@ SupportMapFragment sMapFragment;
             }
 
         } else if(id == R.id.nav_signout)
-        {
+        { int Signed = sharedpreferences.getInt(logging,0);
             if(Signed == 1) {
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+                editor.putInt(logging,0);
+                editor.commit();
                 Toast temp = Toast.makeText(MainActivity.this, "Signed Out Successfully!", Toast.LENGTH_SHORT);
                 temp.show();
                 Signed = 0;
